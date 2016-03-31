@@ -8,24 +8,29 @@
  *
  * Main module of the application.
  */
-angular
+var microAppsDemo =angular
   .module('chancletagithubioApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ngStorage'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/donationForm.html',
+        controller: 'DonationCtrl',
+        controllerAs: 'donation'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/checkout', {
+        templateUrl: 'views/checkoutForm.html',
+        controller: 'CheckoutCtrl',
+        controllerAs: 'checkout'
       })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .constant("ConfigData", {url: "http://10.100.29.137", port: 9001, wsURL: "ws://10.100.29.137"});
+
+
+
