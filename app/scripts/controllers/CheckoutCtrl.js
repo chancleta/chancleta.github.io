@@ -7,6 +7,6 @@
  * # CheckoutCtrl
  * Controller of the microAppsDemo
  */
-microAppsDemo.controller('CheckoutCtrl', function () {
-
-});
+microAppsDemo.controller('CheckoutCtrl',["DonationService", function (DonationService) {
+console.log(DonationService.getDonationData());
+}]);

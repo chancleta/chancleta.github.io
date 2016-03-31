@@ -20,8 +20,8 @@ microAppsDemo.factory('DonationService',["$resource","$localStorage","$location"
 
 
   return {
-    isUserLoggedIn: function(){
-      return $localStorage.token != null;
+    getDonationData: function(){
+      return donationDataObject;
     },
 
 
@@ -31,7 +31,6 @@ microAppsDemo.factory('DonationService',["$resource","$localStorage","$location"
         amount: donateData.amount,
         currency: donateData.currency
       };
-     // console.log(donationDataObject);
     }
 
   };

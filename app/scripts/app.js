@@ -12,7 +12,8 @@ var microAppsDemo =angular
   .module('chancletagithubioApp', [
     'ngResource',
     'ngRoute',
-    'ngStorage'
+    'ngStorage',
+    'angularPayments'
   ])
   .config(function ($routeProvider) {
     $routeProvider

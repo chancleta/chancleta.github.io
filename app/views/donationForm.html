@@ -16,17 +16,13 @@
 
             <div class="input-field col m5 s12">
               <label for="currency" class="active">Currency</label>
-
-              <select class="browser-default" name="currency" id="currency"  ng-model="donateData.currency" ng-options="item.val as item.label for item in currencyOptions">
-              </select>
+              <select class="browser-default" name="currency" id="currency"  ng-model="donateData.currency" ng-options="item.val as item.label for item in currencyOptions" ></select>
             </div>
           </div>
-
-
         </div>
         <div class="card-action">
           <button class="btn waves-effect waves-light" type="submit" name="action"
-                  ng-disabled="donateForm.$invalid" ng-click="donate(donateForm)">Donate
+                  ng-disabled="donateForm.$invalid" ng-click="donate(donateForm)">Checkout
             <i class="material-icons right">send</i>
           </button>
         </div>
