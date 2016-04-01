@@ -53,6 +53,9 @@ export default class DonationService{
   }
 
   getRemainingTimeUntilNextDonation(){
+    if(typeof this.localStorage.paymentInfo === 'undefined')
+      return -1;
+
     return  3600 - (new Date().getTime() - this.localStorage.paymentInfo.paidOnTimeStamp)/1000;
   }
 
