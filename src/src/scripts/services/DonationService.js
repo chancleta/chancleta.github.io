@@ -21,15 +21,34 @@ export default class DonationService{
     this.donationDataObject.currency = donateData.currency;
   }
 
-  performPayment (paymentInformation){
+  performPayment (paymentInformation, onSuccess, onError){
 
-    paymentInformation.card.expiryMonth = paymentInformation.expiry.split("/")[0];
-    paymentInformation.card.expiryYear = paymentInformation.expiry.split("/")[1];
+    var requestData = {};
+    /**
+     *  Setting up the request data see https://docs.payon.com/tutorials/server-to-server
+     */
+    requestData['card.expiryMonth'] = paymentInformation.expiry.split("/")[0];
+    requestData['card.expiryYear'] = paymentInformation.expiry.split("/")[1];
 
-    paymentInformation = Object.assign(paymentInformation, this.configData.authData);
-    paymentInformation = Object.assign(paymentInformation, this.donationDataObject );
-    paymentInformation = Object.assign(paymentInformation, this.configData.paymentType );
+    requestData['card.number'] = paymentInformation.card.number;
+    requestData['card.cvv'] = paymentInformation.card.cvv;
 
-    this.resource.save({},paymentInformation);
+    requestData = Object.assign(requestData, this.configData.authData);
+    requestData = Object.assign(requestData, this.donationDataObject );
+    requestData['paymentType'] = this.configData.paymentType;
+
+    this.resource.save({},$.param(requestData)).
+      $promise.
+      then(function(responseData){
+
+      if(responseData.id){
+        onSuccess();
+      }else{
+        onError(responseData);
+      }
+      })
+      .catch(function(response){
+        onError(response);
+      });
   }
 }
