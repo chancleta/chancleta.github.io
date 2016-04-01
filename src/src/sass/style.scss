@@ -87,3 +87,21 @@ body {
     border-bottom: 0;
   }
 }
+
+
+.progress.paymentCompleted{
+  height:40px;
+}
+.toast.error {
+  background: #B71C1C;
+}
+
+.toast.success {
+  background: #004D40;
+}
+
+.card-content .card-title{
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}

@@ -2,7 +2,7 @@
 export default class CheckoutCtrl {
 
     /*@ngInject;*/
-    constructor(DonationService,$location) {
+    constructor(DonationService,$location,$localStorage) {
         if(!DonationService.donationData().isValid()){
             $location.path('/');
         }
@@ -10,6 +10,7 @@ export default class CheckoutCtrl {
         this.paymentInfo = {};
         this.isRequestActive = false;
         this.location = $location;
+        this.localStorage = $localStorage;
     }
 
     performCheckout(paymentForm){
@@ -20,12 +21,15 @@ export default class CheckoutCtrl {
 
         let onError = (response) => {
             this.isRequestActive = false;
-            Materialize.toast(response.result.description, 5000, "error");
+            Materialize.toast("Oops Something went wrong while contacting the server, please verify the fields and try again.", 5000, "error");
         };
 
-        let onSuccess = () => {
+        let onSuccess = (data) => {
             Materialize.toast("Donation successfully completed!!!", 5000, "success");
-            this.location.panth("/paymentCompleted");
+            this.isRequestActive = false;
+            this.localStorage.paymentInfo = data;
+            this.localStorage.paymentInfo.paidOnTimeStamp = new Date().getTime();
+            this.location.path("/paymentCompleted");
         };
 
         this.isRequestActive = true;

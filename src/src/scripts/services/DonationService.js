@@ -5,11 +5,11 @@ import DonationModel from '../models/DonationModel';
 
 export default class DonationService{
   /*@ngInject;*/
-  constructor($resource,ConfigData) {
+  constructor($resource,ConfigData,$localStorage) {
     this.resource = $resource(ConfigData.url);
     this.donationDataObject = new DonationModel();
     this.configData = ConfigData;
-
+    this.localStorage = $localStorage;
   }
 
   donationData(){
@@ -42,7 +42,7 @@ export default class DonationService{
       then(function(responseData){
 
       if(responseData.id){
-        onSuccess();
+        onSuccess(responseData);
       }else{
         onError(responseData);
       }
@@ -50,5 +50,23 @@ export default class DonationService{
       .catch(function(response){
         onError(response);
       });
+  }
+
+  getRemainingTimeUntilNextDonation(){
+    return  3600 - (new Date().getTime() - this.localStorage.paymentInfo.paidOnTimeStamp)/1000;
+  }
+
+  isUserAllowedToDonate(){
+    if(typeof this.localStorage.paymentInfo === 'undefined')
+        return true;
+    return this.getRemainingTimeUntilNextDonation() <= 0;
+  }
+
+  restoreDonation(){
+    delete  this.localStorage.paymentInfo;
+  }
+
+  getPaymentInformation(){
+    return this.localStorage.paymentInfo;
   }
 }

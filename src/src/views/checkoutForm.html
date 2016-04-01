@@ -4,23 +4,25 @@
       <div class="progress"  ng-show="checkout.isRequestActive">
         <div class="indeterminate"></div>
       </div>
+
       <form class="form-signin" name="paymentForm">
         <div class="card-content teal-text">
+          <span class="card-title">Credit Card Information</span>
 
           <div class="input-field">
-            <i class="material-icons prefix">monetization_on</i>
+            <i class="material-icons prefix">credit_card</i>
             <input id="cardNumber" type="text" ng-model="checkout.paymentInfo.card.number" payments-validate="card"  payments-type-model="paymentInfo.type" required maxlength="22" payments-format="card" autofocus>
             <label for="cardNumber">Card Number</label>
           </div>
 
           <div class="input-field">
-            <i class="material-icons prefix">monetization_on</i>
+            <i class="material-icons prefix">date_range</i>
             <input id="expireDate" type="text" ng-model="checkout.paymentInfo.expiry" payments-validate="expiry" required maxlength="7" payments-format="expiry" />
             <label for="expireDate">Exp. Date</label>
           </div>
 
           <div class="input-field">
-            <i class="material-icons prefix">monetization_on</i>
+            <i class="material-icons prefix">crop_16_9</i>
             <input id="cvcNumber" type="text" ng-model="checkout.paymentInfo.card.cvv" payments-validate="cvc" required maxlength="4"/>
             <label for="cvcNumber">CVC</label>
           </div>
