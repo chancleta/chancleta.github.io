@@ -33,8 +33,8 @@ export default class DonationService{
     requestData['card.number'] = paymentInformation.card.number;
     requestData['card.cvv'] = paymentInformation.card.cvv;
 
-    requestData = Object.assign(requestData, this.configData.authData);
-    requestData = Object.assign(requestData, this.donationDataObject );
+    requestData = $.extend(requestData, this.configData.authData);
+    requestData =  $.extend(requestData, this.donationDataObject );
     requestData['paymentType'] = this.configData.paymentType;
 
     this.resource.save({},$.param(requestData)).

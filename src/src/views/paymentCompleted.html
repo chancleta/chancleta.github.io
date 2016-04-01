@@ -34,11 +34,11 @@
                     <div class="card-action">
 
 
-                        <timer start-time="completed.endTime - 3600000" end-time="completed.endTime"  interval="1000">
+                        <timer start-time="completed.endTime - 3600000" end-time="completed.endTime"  interval="1000" ng-show="!completed.isUserAllowedToDonate">
                             <h6>Next Donation Available in:   {{59 - minutes}} minutes, {{60 - seconds}} seconds.</h6>
 
                             <div class="progress paymentCompleted">
-                                <div class="determinate " style="width:  {{100-progressBar}}%"></div>
+                                <div class="determinate " ng-attr-style="width:{{100-progressBar}}%"></div>
                             </div>
 
                         </timer>
