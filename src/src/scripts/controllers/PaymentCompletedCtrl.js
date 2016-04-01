@@ -9,6 +9,7 @@ export default class PaymentCompletedCtrl {
         this.donationService = DonationService;
         this.location = $location;
         this.scope = $scope;
+        this.paymentInformation =  DonationService.getPaymentInformation();
 
         let onTimerStopped = (event,data) => {
             this.donationService.restoreDonation();
