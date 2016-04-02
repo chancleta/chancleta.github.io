@@ -33,12 +33,12 @@
 
           <div class="input-field">
             <i class="material-icons prefix">crop_16_9</i>
-            <input id="cvcNumber" type="text" ng-model="checkout.paymentInfo.card.cvv" payments-validate="cvc" required maxlength="4"/>
+            <input name="cvcNumber" id="cvcNumber" type="text" ng-model="checkout.paymentInfo.card.cvv" payments-validate="cvc" required maxlength="4"/>
             <label for="cvcNumber">CVC</label>
-            <div ng-show="paymentForm.expireDate.$dirty">
-              <p class="errorMsg" ng-show="paymentForm.expireDate.$error.maxLength">Cannot have more than 4 characters</p>
-              <p class="errorMsg" ng-show="paymentForm.expireDate.$error.cvc">Invalid CVC</p>
-              <p class="errorMsg" ng-show="paymentForm.expireDate.$error.required">CVC is requried</p>
+            <div ng-show="paymentForm.cvcNumber.$dirty">
+              <p class="errorMsg" ng-show="paymentForm.cvcNumber.$error.maxLength">Cannot have more than 4 characters</p>
+              <p class="errorMsg" ng-show="paymentForm.cvcNumber.$error.cvc">Invalid CVC</p>
+              <p class="errorMsg" ng-show="paymentForm.cvcNumber.$error.required">CVC is requried</p>
             </div>
           </div>
 
