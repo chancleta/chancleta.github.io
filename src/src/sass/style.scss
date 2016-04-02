@@ -105,3 +105,9 @@ body {
   width: 100%;
   display: inline-block;
 }
+
+input {
+  &.ng-invalid-expiry, &.ng-invalid-cvc, &.ng-invalid-card {
+    border-bottom: 1px solid #F44336;
+  }
+}
