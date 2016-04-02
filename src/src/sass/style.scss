@@ -111,3 +111,10 @@ input {
     border-bottom: 1px solid #F44336;
   }
 }
+
+.input-field{
+  .errorMsg{
+    text-align: center;
+    color: #F44336 !important;
+  }
+}
