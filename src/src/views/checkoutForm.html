@@ -13,32 +13,33 @@
             <i class="material-icons prefix">credit_card</i>
             <input name="cardNumber" id="cardNumber" type="text" ng-model="checkout.paymentInfo.card.number" payments-validate="card"  payments-type-model="paymentInfo.type" required maxlength="22" payments-format="card" autofocus>
             <label for="cardNumber">Card Number</label>
-
-            <p class="errorMsg" ng-show="paymentForm.cardNumber.$error.maxLength">Cannot have more than 22 characters</p>
-            <p class="errorMsg" ng-show="paymentForm.cardNumber.$error.card">Invalid Credit Card</p>
-            <p class="errorMsg" ng-show="paymentForm.cardNumber.$error.required">Credit Card is requried</p>
-
-
+            <div ng-show="paymentForm.cardNumber.$dirty">
+              <p class="errorMsg" ng-show="paymentForm.cardNumber.$error.maxLength">Cannot have more than 22 characters</p>
+              <p class="errorMsg" ng-show="paymentForm.cardNumber.$error.card">Invalid Credit Card</p>
+              <p class="errorMsg" ng-show="paymentForm.cardNumber.$error.required">Credit Card is requried</p>
+            </div>
           </div>
 
           <div class="input-field">
             <i class="material-icons prefix">date_range</i>
             <input name="expireDate" id="expireDate" type="text" ng-model="checkout.paymentInfo.expiry" payments-validate="expiry" required maxlength="7" payments-format="expiry" />
             <label for="expireDate">Exp. Date</label>
-            <p class="errorMsg" ng-show="paymentForm.expireDate.$error.maxLength">Cannot have more than 7 characters</p>
-            <p class="errorMsg" ng-show="paymentForm.expireDate.$error.expiry">Invalid Exp. Date</p>
-            <p class="errorMsg" ng-show="paymentForm.expireDate.$error.required">Exp. Date is requried</p>
-
+            <div ng-show="paymentForm.expireDate.$dirty">
+              <p class="errorMsg" ng-show="paymentForm.expireDate.$error.maxLength">Cannot have more than 7 characters</p>
+              <p class="errorMsg" ng-show="paymentForm.expireDate.$error.expiry">Invalid Exp. Date</p>
+              <p class="errorMsg" ng-show="paymentForm.expireDate.$error.required">Exp. Date is requried</p>
+            </div>
           </div>
 
           <div class="input-field">
             <i class="material-icons prefix">crop_16_9</i>
             <input id="cvcNumber" type="text" ng-model="checkout.paymentInfo.card.cvv" payments-validate="cvc" required maxlength="4"/>
             <label for="cvcNumber">CVC</label>
-            <p class="errorMsg" ng-show="paymentForm.expireDate.$error.maxLength">Cannot have more than 4 characters</p>
-            <p class="errorMsg" ng-show="paymentForm.expireDate.$error.cvc">Invalid CVC</p>
-            <p class="errorMsg" ng-show="paymentForm.expireDate.$error.required">CVC is requried</p>
-
+            <div ng-show="paymentForm.expireDate.$dirty">
+              <p class="errorMsg" ng-show="paymentForm.expireDate.$error.maxLength">Cannot have more than 4 characters</p>
+              <p class="errorMsg" ng-show="paymentForm.expireDate.$error.cvc">Invalid CVC</p>
+              <p class="errorMsg" ng-show="paymentForm.expireDate.$error.required">CVC is requried</p>
+            </div>
           </div>
 
         <div class="card-action">

@@ -14,11 +14,13 @@
               <input id="amount" type="number" class="validate" required step="0.01" min="0.01" max="100"
                      ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model="donation.donateData.amount" name="amount" autofocus>
               <label for="amount">Amount</label>
+              <div ng-show="donateForm.amount.$dirty">
+                <p class="errorMsg" ng-show="donateForm.amount.$error.min">Min value is 0.01</p>
+                <p class="errorMsg" ng-show="donateForm.amount.$error.max">Max value is 100</p>
+                <p  class="errorMsg" ng-show="donateForm.amount.$error.pattern">Value can only have 2 decimal points</p>
+                <p  class="errorMsg" ng-show="donateForm.amount.$error.required">Amount is required.</p>
+              </div>
 
-              <p class="errorMsg" ng-show="donateForm.amount.$error.min">Min value is 0.01</p>
-              <p class="errorMsg" ng-show="donateForm.amount.$error.max">Max value is 100</p>
-              <p  class="errorMsg" ng-show="donateForm.amount.$error.pattern">Value can only have 2 decimal points</p>
-              <p  class="errorMsg" ng-show="donateForm.amount.$error.required">Amount is required.</p>
 
             </div>
 
